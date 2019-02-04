@@ -9,6 +9,26 @@ public class Associate{
 	public Associate() {}
 	
 	
+	public Salary getSalary() {
+		return salary;
+	}
+
+
+	public void setSalary(Salary salary) {
+		this.salary = salary;
+	}
+
+
+	public BankDetails getBankDetails() {
+		return bankDetails;
+	}
+
+
+	public void setBankDetails(BankDetails bankDetails) {
+		this.bankDetails = bankDetails;
+	}
+
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;

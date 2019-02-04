@@ -31,7 +31,33 @@ public class PayrollServicesImpl implements PayrollServices{
 	@Override
 	public int calculateNetSalary(int associateId) throws AssociateDetailNotfoundException {
 		Associate associate=getAssociateDetails(associateId);
-		
+		int netSalary=0,grossSalary=0,monthlyTax=0,yearlyTax=0;
+		associate.getSalary().setHra((int)(associate.getSalary().getBasicsalary()*0.3));
+		associate.getSalary().setCompanyPf((int)(associate.getSalary().getBasicsalary()*0.3));
+		associate.getSalary().setPersonalAllowance((int)(associate.getSalary().getBasicsalary()*0.25));
+		associate.getSalary().setOtherAllowance((int)(associate.getSalary().getBasicsalary()*0.2));
+		grossSalary=(associate.getSalary().getBasicsalary())+associate.getSalary().getHra()+associate.getSalary().getCompanyPf()
+				+associate.getSalary().getPersonalAllowance()+associate.getSalary().getOtherAllowance();
+		int tempSalary=grossSalary;
+		if(grossSalary<=250000)
+		{
+			associate.getSalary().setMonthlyTax(0);
+		}
+		else if(grossSalary>250000&&grossSalary<=500000)
+		{
+			grossSalary=grossSalary-associate.getYearlyInvestmentUnder80C();
+			monthlyTax=(int)(grossSalary*0.01);
+		}
+		else if(grossSalary>500000&&grossSalary<=1000000)
+		{
+			grossSalary=grossSalary-associate.getYearlyInvestmentUnder80C();
+			monthlyTax=(int)(grossSalary*0.02);
+		}
+		else if(grossSalary>1000000) {
+			grossSalary=grossSalary-associate.getYearlyInvestmentUnder80C();
+			monthlyTax=(int)(grossSalary*0.03);
+		}
+		associate.getSalary().setMonthlyTax(monthlyTax);
 		
 		return 0;
 	}
