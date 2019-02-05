@@ -14,7 +14,8 @@ class MainClass {
 		System.out.println("--------------------Banking System-------------------");
 		char ch='Y';
 		while(ch=='Y'|ch=='y') {
-			System.out.println("Enter your choice:\n1.Open Account \n2.Get AcountDetails \n3.Get all AccountDetails \n4.CalculateSalary");
+			System.out.println("Enter your choice:\n1.Open Account \n2.Get AcountDetails \n"
+					 +"3.Get all AccountDetails \n4Deposit");
 			int choice=sc.nextInt();
 			switch(choice){
 			case 1:
@@ -38,8 +39,15 @@ class MainClass {
 			case 3:
 				bankingservices=new BankingServicesImpl();
 				List<Account>allAssociateDetails=bankingservices.getAllAccountDetails();
+				System.out.println("allAccountDetails");
 				break;
 			case 4:
+				bankingservices=new BankingServicesImpl();
+				System.out.println("Enter account number");
+				int accountNo=sc.nextInt();
+				System.out.println("Enter amount");
+				int amount=sc.nextInt();
+				bankingservices.depositAmount(accountNo, amount);
 				break;
 			default:
 				System.out.println("Please enter a valid number");
