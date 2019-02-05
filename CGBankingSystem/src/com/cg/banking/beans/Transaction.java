@@ -76,9 +76,9 @@ public class Transaction {
 
 	@Override
 	public String toString() {
-		return "Transaction [transactionId=" + transactionId + ", amount=" + amount + ", transactionType="
-				+ transactionType + ", getTransactionId()=" + getTransactionId() + ", getAmount()=" + getAmount()
-				+ ", getTransactionType()=" + getTransactionType() + ", hashCode()=" + hashCode() + ", getClass()="
-				+ getClass() + ", toString()=" + super.toString() + "]";
+		return "***********************TRANSACTION DETAILS*********************"
+				+ "\nTransaction Id = " + transactionId + "\nAmount = " + amount + "\nTransaction Type = "
+				+ transactionType + "\nTransaction Id = " + getTransactionId() + "Amount = " + getAmount()
+				+ "\nTransaction Type = " + getTransactionType() ;
 	}
 }
