@@ -38,28 +38,33 @@ public class PayrollServicesImpl implements PayrollServices{
 		associate.getSalary().setOtherAllowance((int)(associate.getSalary().getBasicsalary()*0.2));
 		grossSalary=(associate.getSalary().getBasicsalary())+associate.getSalary().getHra()+associate.getSalary().getCompanyPf()
 				+associate.getSalary().getPersonalAllowance()+associate.getSalary().getOtherAllowance();
-		int tempSalary=grossSalary;
-		if(grossSalary<=250000)
-		{
+		int annualGrossSalary=grossSalary*12;
+		int investment=associate.getYearlyInvestmentUnder80C()+associate.getSalary().getCompanyPf()+associate.getSalary().getEpf();
+		if(investment>150000)
+			investment=150000;
+		int taxableAmount=grossSalary;
+		if(annualGrossSalary<=250000){
 			associate.getSalary().setMonthlyTax(0);
 		}
-		else if(grossSalary>250000&&grossSalary<=500000)
-		{
-			grossSalary=grossSalary-associate.getYearlyInvestmentUnder80C();
+		else if(annualGrossSalary>250000&&annualGrossSalary<=500000){
+			taxableAmount=annualGrossSalary-250000;
+			if(taxableAmount>investment)
 			monthlyTax=(int)(grossSalary*0.01);
 		}
-		else if(grossSalary>500000&&grossSalary<=1000000)
+		else if(annualGrossSalary>500000&&annualGrossSalary<=1000000)
 		{
 			grossSalary=grossSalary-associate.getYearlyInvestmentUnder80C();
 			monthlyTax=(int)(grossSalary*0.02);
 		}
-		else if(grossSalary>1000000) {
-			grossSalary=grossSalary-associate.getYearlyInvestmentUnder80C();
+		else if(annualGrossSalary>1000000) {
+			taxableAmount-=investment;
 			monthlyTax=(int)(grossSalary*0.03);
+			associate.getSalary().setMonthlyTax(monthlyTax);
 		}
-		associate.getSalary().setMonthlyTax(monthlyTax);
-		
-		return 0;
+		else
+			monthlyTax=0;
+		netSalary=grossSalary-associate.getSalary().getCompanyPf()-associate.getSalary().getEpf();
+		return netSalary;
 	}
 
 	@Override
