@@ -1,6 +1,5 @@
 package com.cg.banking.beans;
 
-import java.util.List;
 import java.util.Map;
 
 public class Account {
@@ -8,10 +7,10 @@ public class Account {
 	private int pinNumber;
 	private String accountType,accountStatus;
 	private float accountBalance;
-	private Map<Integer,Transactions>transactions;
+	private Map<Integer,Transaction> transactions;
 	public Account() {}
 	public Account(int pinNumber, String accountType, String accountStatus, float accountBalance,
-			Map<Integer,Transactions> transactions) {
+			Map<Integer,Transaction> transactions) {
 		super();
 		this.pinNumber = pinNumber;
 		this.accountType = accountType;
@@ -20,7 +19,7 @@ public class Account {
 		this.transactions = transactions;
 	}
 	public Account(long accountNo, int pinNumber, String accountType, String accountStatus, float accountBalance,
-			Map<Integer,Transactions> transactions) {
+			Map<Integer,Transaction> transactions) {
 		super();
 		this.accountNo = accountNo;
 		this.pinNumber = pinNumber;
@@ -29,6 +28,7 @@ public class Account {
 		this.accountBalance = accountBalance;
 		this.transactions = transactions;
 	}
+	
 	public Account(String accountType, float accountBalance) {
 		super();
 		this.accountType = accountType;
@@ -64,10 +64,10 @@ public class Account {
 	public void setAccountBalance(float accountBalance) {
 		this.accountBalance = accountBalance;
 	}
-	public Map<Integer,Transactions> getTransactions() {
+	public Map<Integer,Transaction> getTransactions() {
 		return transactions;
 	}
-	public void setTransactions(Map<Integer,Transactions> transactions) {
+	public void setTransactions(Map<Integer,Transaction> transactions) {
 		this.transactions = transactions;
 	}
 	@Override
@@ -116,15 +116,8 @@ public class Account {
 	}
 	@Override
 	public String toString() {
-		return "Account [accountNo=" + accountNo + ", pinNumber=" + pinNumber + ", accountType=" + accountType
-				+ ", accountStatus=" + accountStatus + ", accountBalance=" + accountBalance + ", transactions="
-				+ transactions + ", getAccountNo()=" + getAccountNo() + ", getPinNumber()=" + getPinNumber()
-				+ ", getAccountType()=" + getAccountType() + ", getAccountStatus()=" + getAccountStatus()
-				+ ", getAccountBalance()=" + getAccountBalance() + ", getTransactions()=" + getTransactions()
-				+ ", hashCode()=" + hashCode() + ", getClass()=" + getClass() + ", toString()=" + super.toString()
-				+ "]";
-	}
-	
-	
-
+		return "\nAccount No=" + accountNo + "\nPin Number=" + pinNumber + "\nAccount Type=" + accountType
+				+ "\nAccount Status=" + accountStatus + "\nAccount Balance=" + accountBalance + "\nTransactions="
+				+ transactions ;
+	}	
 }

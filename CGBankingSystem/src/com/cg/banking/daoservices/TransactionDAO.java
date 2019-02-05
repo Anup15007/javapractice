@@ -2,11 +2,11 @@ package com.cg.banking.daoservices;
 
 import java.util.List;
 
-import com.cg.banking.beans.Transactions;
+import com.cg.banking.beans.Transaction;
 
 public interface TransactionDAO {
-	Transactions save(Transactions transaction);
-	boolean update(Transactions transaction);
-	Transactions findOne(int transactionId);
-	List<Transactions>findAll();
+	Transaction save(Transaction transaction);
+	boolean update(Transaction transaction);
+	Transaction findOne(int transactionId);
+	List<Transaction> findAll();
 }

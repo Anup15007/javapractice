@@ -4,14 +4,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.cg.banking.beans.Account;
-import com.cg.banking.util.AccountDBUtil;
+import com.cg.banking.util.BankingDBUtil;
 
 public class AccountDAOImpl implements AccountDAO{
 
 	@Override
 	public Account save(Account account) {
-		account.setAccountNo(AccountDBUtil.getACCOUNT_NUMBER());
-		AccountDBUtil.accounts.put(account.getAccountNo(),account);
+		account.setAccountNo(BankingDBUtil.getACCOUNT_NUMBER());
+		BankingDBUtil.accounts.put(account.getAccountNo(),account);
 		return account;
 	}
 
@@ -23,12 +23,12 @@ public class AccountDAOImpl implements AccountDAO{
 
 	@Override
 	public Account findOne(long accountNo) {
-		return AccountDBUtil.accounts.get(accountNo);
+		return BankingDBUtil.accounts.get(accountNo);
 	}
 
 	@Override
 	public List<Account> findAll() {
-		ArrayList<Account>accounts=new ArrayList<Account>(AccountDBUtil.accounts.values());
+		ArrayList<Account> accounts = new ArrayList<Account>(BankingDBUtil.accounts.values());
 		return accounts;
 	}
 

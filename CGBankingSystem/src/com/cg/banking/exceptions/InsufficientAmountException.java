@@ -1,6 +1,6 @@
 package com.cg.banking.exceptions;
 
-public class InsufficientAmountException  extends RuntimeException{
+public class InsufficientAmountException extends RuntimeException{
 
 	public InsufficientAmountException() {
 		super();

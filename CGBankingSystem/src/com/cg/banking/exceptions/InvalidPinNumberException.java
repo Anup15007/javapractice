@@ -1,6 +1,6 @@
 package com.cg.banking.exceptions;
 
-public class InvalidPinNumberException  extends RuntimeException{
+public class InvalidPinNumberException extends RuntimeException{
 
 	public InvalidPinNumberException() {
 		super();

@@ -8,6 +8,5 @@ public interface AccountDAO {
 	Account save(Account account);
 	boolean update(Account account);
 	Account findOne(long accountNo);
-	List<Account>findAll();
-
+	List<Account> findAll();
 }

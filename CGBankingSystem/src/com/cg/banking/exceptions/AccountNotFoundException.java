@@ -1,6 +1,6 @@
 package com.cg.banking.exceptions;
 
-public class AccountNotFoundException  extends RuntimeException {
+public class AccountNotFoundException extends RuntimeException{
 
 	public AccountNotFoundException() {
 		super();
